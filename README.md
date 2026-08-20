@@ -43,6 +43,8 @@ npm run build
 1. Press **Space**, click, or tap to flap-jump.
 2. Use **Left/Right** arrows or **A/D** to steer.
 3. Land on green platforms to bounce upward and keep the run alive.
+4. Collect bagels. Fresh run bagels are auto-deposited every 10 bagels, can be force-saved, and are deposited when the run ends.
+5. Avoid purple **AD!** booths. Grab rainbow power-ups for bonus bagels or a one-hit shield.
 4. Collect bagels. Fresh run bagels are deposited into your wallet when the run ends.
 5. Avoid purple **AD!** booths. They are legally distinct from malware, but emotionally identical.
 6. Beat your high score, buy upgrades, then make one more run because surely this time Todd.exe goes down.
@@ -51,6 +53,7 @@ npm run build
 
 - Buy **Jump Springs** early if you keep missing platforms. More vertical power gives you more recovery time.
 - Buy **Crumb Magnet** if you can survive but miss collectibles. It pulls nearby bagels toward you.
+- Watch the **Bagel Memory Card**. It shows your saved wallet from LocalStorage, which is what the shop spends.
 - Buy **Cursed Outfits** only when you are spiritually ready. They are cosmetic and very important to morale.
 - Use short taps/clicks to recover, and start steering before you need to land; the sewer waits for nobody.
 
@@ -61,6 +64,7 @@ Important files:
 - `src/main.js`
   - Save model: `save` and `persist()`.
   - Game state: the `state` object.
+  - Gameplay: `reset()`, `spawnChunk()`, `jump()`, `depositBagels()`, `gameOver()`, `update()`, and `draw()`.
   - Gameplay: `reset()`, `spawnPlatform()`, `jump()`, `gameOver()`, `update()`, and `draw()`.
   - UI/shop glue: `syncUi()` and `buy()`.
 - `src/styles.css`
@@ -70,6 +74,12 @@ Important files:
 
 ### Game loop composition
 
+1. `reset()` seeds a fresh run and rotates into a biome based on the saved run count.
+2. `spawnChunk()` continuously adds randomized platforms, bagels, hazards, and power-ups ahead of the player.
+3. `update()` applies gravity, horizontal input, platform collision, camera push, item magnetism, power-up effects, hazard collision, scoring, biome rotation, and object recycling.
+4. `draw()` clears the canvas and paints animated backgrounds, platforms, bagels, power-ups, ad booths, shield effects, the hero, HUD, and game-over text.
+5. `requestAnimationFrame(update)` keeps the loop smooth and continuous.
+6. LocalStorage persists high score, bagel wallet, run count, outfit, and upgrade levels.
 1. `reset()` seeds the first platform field and restores player run state.
 2. `update()` applies gravity, horizontal input, platform collision, camera push, item magnetism, hazard collision, scoring, and object recycling.
 3. `draw()` clears the canvas and paints stars, platforms, bagels, ad booths, the hero, HUD, and game-over text.
@@ -83,3 +93,9 @@ Important files:
 - Add score-gated story branches and boss encounters with Todd.exe.
 - Add power-ups such as temporary invincibility, double jump, and slow-motion dial-up mode.
 - Add a Vite build when bundling, cache busting, TypeScript, or PWA support becomes necessary.
+
+## Latest gameplay improvements
+
+- Added a more polished arcade-cabinet page with animated marquee, scanlines, meters, bank card, and more colorful canvas backgrounds.
+- Added a visible **Bagel Memory Card** and force-save button so players can clearly see and preserve spendable bagels.
+- Added a continuous randomized chunk spawner with rotating biomes, moving platform drift, power-ups, shields, bonus bagels, combo scoring, and endlessly recycled obstacles.

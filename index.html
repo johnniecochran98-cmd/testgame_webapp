@@ -1,1 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pop-Tart Punk: Sewer Skater</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <main>
+      <section class="marquee">
+        <span>✦ POP-TART PUNK: SEWER SKATER 1999 ✦ BAGEL BANK ONLINE ✦ ONE MORE RUN ✦</span>
+      </section>
+      <div class="layout">
+        <aside class="panel story-panel">
+          <div class="sticker">BBS QUEST LOG</div>
+          <h1>Visual Novel-ish Drama</h1>
+          <div class="portrait" id="portrait">🐹</div>
+          <p id="story"></p>
+          <button id="nextStory">Next ridiculous cutscene</button>
+
+          <h2>Bagel Memory Card</h2>
+          <div class="bank-card">
+            <span>🥯 Saved Bagels</span>
+            <strong id="wallet">0</strong>
+          </div>
+          <p class="fine-print">
+            Your bagel wallet, high score, outfits, and upgrade levels are remembered in this browser with LocalStorage.
+          </p>
+        </aside>
+
+        <section class="arcade-cabinet" aria-label="Arcade cabinet">
+          <div class="cabinet-top">
+            <span>CYBERTOWN SEWER CAM</span>
+            <span id="biomeName">Booting...</span>
+          </div>
+          <canvas id="game" width="900" height="680" aria-label="Pop-Tart Punk arcade game"></canvas>
+          <div class="cabinet-bottom">
+            <span>Score <b id="score">0</b></span>
+            <span>Fresh Bagels <b id="fresh">0</b></span>
+            <span>High <b id="high">0</b></span>
+          </div>
+        </section>
+
+        <aside class="panel shop">
+          <div class="sticker hot">BAGEL MALL</div>
+          <h1>Upgrade Kiosk</h1>
+          <p>Outfit: <b id="outfit">Mustard Hoodie</b></p>
+          <div class="meter"><span id="speedMeter"></span></div>
+          <button id="speedBtn">Upgrade jump springs</button>
+          <div class="meter"><span id="magnetMeter"></span></div>
+          <button id="magnetBtn">Upgrade crumb magnet</button>
+          <button id="outfitBtn">Buy cursed outfit</button>
+          <button id="saveBtn" class="secondary">Force-save bagel wallet</button>
+          <button id="resetSaveBtn" class="danger">Reset save</button>
+          <p class="tip">
+            Controls: ← → or A/D to surf, Space/click/tap to flap-jump. Grab rainbow power-ups, dodge AD! booths,
+            and ride randomized chunks forever.
+          </p>
+          <p class="blink" id="status">INSERT BAGEL</p>
+        </aside>
+      </div>
+    </main>
+    <script src="src/main.js"></script>
+  </body>
+</html>
 <!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Pop-Tart Punk: Sewer Skater</title><link rel="stylesheet" href="src/styles.css"></head><body><main><section class="marquee">✦ POP-TART PUNK: SEWER SKATER 1999 ✦ no quarters, only bagels ✦</section><div class="layout"><aside class="panel"><h1>Visual Novel-ish Drama</h1><div class="portrait" id="portrait">🐹</div><p id="story"></p><button id="nextStory">Next ridiculous cutscene</button><h2>Stats</h2><p>High Score: <b id="high">0</b><br>Run Score: <b id="score">0</b><br>Wallet Bagels: <b id="wallet">0</b><br>Fresh Bagels: <b id="fresh">0</b></p></aside><canvas id="game" width="900" height="680" aria-label="Pop-Tart Punk arcade game"></canvas><aside class="panel shop"><h1>Bagel Mall</h1><p>Outfit: <b id="outfit">Mustard Hoodie</b></p><button id="speedBtn">Upgrade jump springs</button><button id="magnetBtn">Upgrade crumb magnet</button><button id="outfitBtn">Buy cursed outfit</button><p class="tip">Controls: ← → or A/D to surf, Space/click/tap to flap-jump. Platforms scroll forever. Avoid purple ad booths.</p><p class="blink" id="status">INSERT BAGEL</p></aside></div></main><script src="src/main.js"></script></body></html>
