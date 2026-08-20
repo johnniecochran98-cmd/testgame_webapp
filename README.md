@@ -6,9 +6,9 @@ A silly early-internet, Macromedia Flash-inspired arcade web game where a heroic
 
 This repository is a dependency-free static web app:
 
-- **`index.html`** lays out the arcade canvas, visual-novel panel, Bagel Memory Card, score readouts, arcade cabinet, biome label, and upgrade shop.
-- **`src/main.js`** contains the complete game engine: input, physics, collision checks, randomized endless chunk generation, collectibles, hazards, power-ups, Web Audio bleeps, LocalStorage saves, story panel state, and shop purchases.
-- **`src/styles.css`** provides the Newgrounds/Flash-inspired shell with loud gradients, scanlines, chunky buttons, moving marquee text, meters, blinking status copy, and responsive layout.
+- **`index.html`** lays out the arcade canvas, visual-novel panel, score readouts, and upgrade shop.
+- **`src/main.js`** contains the complete game engine: input, physics, collision checks, scrolling platform generation, collectibles, hazards, Web Audio bleeps, LocalStorage saves, story panel state, and shop purchases.
+- **`src/styles.css`** provides the Newgrounds/Flash-inspired shell with loud gradients, chunky buttons, marquee text, blinking status copy, and responsive layout.
 - **`scripts/validate.mjs`** is a lightweight build check that verifies key files are present and that the JavaScript parses.
 
 The app uses the browser's built-in **Canvas 2D API** for rendering and **Web Audio API** for arcade bleeps. This keeps the game portable, fast to host, and free from runtime package licensing obligations while remaining easy to evolve into a Phaser, PixiJS, or Three.js version later.
@@ -45,6 +45,8 @@ npm run build
 3. Land on green platforms to bounce upward and keep the run alive.
 4. Collect bagels. Fresh run bagels are auto-deposited every 10 bagels, can be force-saved, and are deposited when the run ends.
 5. Avoid purple **AD!** booths. Grab rainbow power-ups for bonus bagels or a one-hit shield.
+4. Collect bagels. Fresh run bagels are deposited into your wallet when the run ends.
+5. Avoid purple **AD!** booths. They are legally distinct from malware, but emotionally identical.
 6. Beat your high score, buy upgrades, then make one more run because surely this time Todd.exe goes down.
 
 ## Upgrade strategy for beginners
@@ -63,6 +65,7 @@ Important files:
   - Save model: `save` and `persist()`.
   - Game state: the `state` object.
   - Gameplay: `reset()`, `spawnChunk()`, `jump()`, `depositBagels()`, `gameOver()`, `update()`, and `draw()`.
+  - Gameplay: `reset()`, `spawnPlatform()`, `jump()`, `gameOver()`, `update()`, and `draw()`.
   - UI/shop glue: `syncUi()` and `buy()`.
 - `src/styles.css`
   - Layout, panels, responsive rules, marquee, buttons, and retro animations.
@@ -77,6 +80,11 @@ Important files:
 4. `draw()` clears the canvas and paints animated backgrounds, platforms, bagels, power-ups, ad booths, shield effects, the hero, HUD, and game-over text.
 5. `requestAnimationFrame(update)` keeps the loop smooth and continuous.
 6. LocalStorage persists high score, bagel wallet, run count, outfit, and upgrade levels.
+1. `reset()` seeds the first platform field and restores player run state.
+2. `update()` applies gravity, horizontal input, platform collision, camera push, item magnetism, hazard collision, scoring, and object recycling.
+3. `draw()` clears the canvas and paints stars, platforms, bagels, ad booths, the hero, HUD, and game-over text.
+4. `requestAnimationFrame(update)` keeps the loop smooth.
+5. LocalStorage persists high score, bagel wallet, outfit, and upgrade levels.
 
 ### Future steps
 
